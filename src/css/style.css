@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  background-color: rgb(187,187,187);
+  width: 50vw;
+  height: 50vh;
+  border-style: dashed;
+  border-width: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
