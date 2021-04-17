@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main>
-      <i class="fas fa-download"></i>
+    <main onclick="uploadFile()" >
+      <i class="fas fa-download fa-3x"></i>
       <h1>Drag&Drop files here</h1>
       <div class="file-row">
-        <i class="fas fa-file-video"></i>
-        <i class="fas fa-file-alt"></i>
-        <i class="fas fa-file-image"></i>
-        <i class="fas fa-folder"></i>
+        <i class="fas fa-file-video fa-3x"></i>
+        <i class="fas fa-file-alt fa-3x"></i>
+        <i class="fas fa-file-image fa-3x"></i>
+        <i class="fas fa-folder fa-3x"></i>
       </div>
+      <input type='file' name='file-upload' onchange="listFiles()" multiple/>
     </main>
+    <div class='hidden-element'>
+      <ul>
+        <li>Arquivo1.jpg</li>
+      </ul>
+    </div>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>

@@ -17,3 +17,31 @@ main {
   align-items: center;
 }
 
+
+main:hover {
+  cursor: pointer;
+}
+
+.file-row {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  font-family: Arial;
+  font-size: 25px;
+}
+
+input[type=file] {
+  display: none;
+}
+
+/* Lista de arquivos */
+body > div {
+  background-color: gray;
+}
+
+body > .hidden-element {
+  display: none;
+}
