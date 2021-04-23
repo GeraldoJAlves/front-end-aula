@@ -6,7 +6,7 @@ body {
 }
 
 main {
-  background-color: rgb(187,187,187);
+  background-color: rgb(187, 187, 187);
   width: 50vw;
   height: 50vh;
   border-style: dashed;
@@ -16,7 +16,6 @@ main {
   justify-content: center;
   align-items: center;
 }
-
 
 main:hover {
   cursor: pointer;
@@ -33,15 +32,37 @@ h1 {
   font-size: 25px;
 }
 
-input[type=file] {
+input[type="file"] {
+  display: none;
+}
+
+body > .hidden-element {
   display: none;
 }
 
 /* Lista de arquivos */
 body > div {
   background-color: gray;
+  width: 100vw;
+  height: 100vh;
 }
 
-body > .hidden-element {
-  display: none;
+.list-files {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.list-files li {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-files li img {
+  flex: 1;
+  width: 100vw;
+  max-height: 90vh;
+  object-fit: contain;
 }
