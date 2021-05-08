@@ -12,37 +12,25 @@ const listFiles = () => {
     document.querySelector('body > main').classList.add('hidden-element');
     document.querySelector('body > div').classList.remove('hidden-element');
 
+    let items = '';
     for(let file of files) {
-      console.log(file);
-      makeList(file);
+      items += makeItemFile(file);
     }
-
-    // for(let x=0; x < files.length; x++) {
-    //   console.log(files[x]);
-    //   makeList(files[x]);
-    // }
+    
+    document.querySelector('.list-files').innerHTML = items;
   }
 }
 
-const makeList = (file) => {
-  // <li></li>
-  const li = document.createElement('li');
-  li.innerText = file.name;
-  const img = document.createElement('img');
-
-  //object url
+const makeItemFile = (file) => {
   const url = URL.createObjectURL(file);
-  img.src = url;
-  li.appendChild(img);
-  document.querySelector('.list-files').appendChild(li);
-
-  // leitura como base64
-  // const fileReader = new FileReader();
-  // fileReader.addEventListener('load', () => {
-  //   img.src = fileReader.result;
-  //   li.appendChild(img);
-  //   document.querySelector('.list-files').appendChild(li);
-  // });
-
-  // fileReader.readAsDataURL(file);
+  return `
+    <li>
+      <div>
+        <i class="fas fa-chevron-down"></i>
+        <span>${file.name}</span>
+        <i class="fas fa-trash"></i>
+      </div>
+      <img src="${url}" />
+    </li>
+  `;
 }
