@@ -5,6 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 main {
@@ -30,7 +31,6 @@ main:hover {
 }
 
 h1 {
-  font-family: 'Roboto', sans-serif;
   font-size: 25px;
 }
 
@@ -44,7 +44,7 @@ body > .hidden-element {
 
 /* Lista de arquivos */
 body > div {
-  background-color: gray;
+  background-color: black;
   width: 100vw;
   height: 100vh;
 }
@@ -57,38 +57,50 @@ body > div {
 
 .list-files li {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
-}
-
-.list-files li div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: black;
-  padding: 6px 16px;
-  color: white;
+  position: relative;
 }
 
 .list-files li img {
   flex: 1;
   width: 100vw;
-  max-height: 90vh;
+  max-height: calc(100% - 40px);
   object-fit: contain;
 }
 
-.list-files li div span {
+.base-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+  padding: 6px 16px;
+  height: 40px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.base-menu span {
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
 }
 
-.list-files li div i {
+.base-menu i {
   font-size: 25px;
   transition: transform 0.2s;
 }
 
-.list-files li div i:hover {
+.base-menu i:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+i.disable-action {
+  color:gray;
+}
+
+i.disable-action:hover {
+  transform: none;
+  cursor: default;
 }
