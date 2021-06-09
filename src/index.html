@@ -20,22 +20,22 @@
       <input type='file' name='file-upload' onchange="listFiles()" multiple/>
     </main>
     <div class='hidden-element'>
-      <ul class='list-files'>
-        <li>
-          <div class="base-menu">
-            <i class="fas fa-chevron-down"></i>
-            <span></span>
-            <i class="fas fa-trash"></i>
-          </div>
-          <img src="" />
-        </li>
+      <ul class='thumbnails'>
       </ul>
-      <div class='base-menu footer'>
-        <i class="fas fa-fast-backward fa-3x" onclick="setImagePreview(0)" ></i>
-        <i class="fas fa-step-backward fa-3x" onclick="indexCurrentImage > 0 ? setImagePreview(--indexCurrentImage): false" ></i>
-        <span>1/1</span>
-        <i class="fas fa-step-forward fa-3x" onclick="indexCurrentImage < (listFilesUpload.length - 1) ? setImagePreview(++indexCurrentImage): false" ></i>
-        <i class="fas fa-fast-forward fa-3x" onclick="setImagePreview(listFilesUpload.length - 1)" ></i>
+      <div class='preview-file'>
+        <div class="base-menu header">
+          <i class="fas fa-chevron-down"></i>
+          <span></span>
+          <i class="fas fa-trash"></i>
+        </div>
+        <img src="" />
+        <div class='base-menu footer'>
+          <i class="fas fa-fast-backward fa-3x" onclick="setImagePreview(0)" ></i>
+          <i class="fas fa-step-backward fa-3x" onclick="indexCurrentImage > 0 ? setImagePreview(--indexCurrentImage): false" ></i>
+          <span>1/1</span>
+          <i class="fas fa-step-forward fa-3x" onclick="indexCurrentImage < (listFilesUpload.length - 1) ? setImagePreview(++indexCurrentImage): false" ></i>
+          <i class="fas fa-fast-forward fa-3x" onclick="setImagePreview(listFilesUpload.length - 1)" ></i>
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="js/index.js"></script>

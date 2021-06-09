@@ -14,12 +14,24 @@ const listFiles = () => {
     listFilesUpload = [];
     document.querySelector('body > main').classList.add('hidden-element');
     document.querySelector('body > div').classList.remove('hidden-element');
-
+    
+    let index = 0;
     for(let file of files) {
-      listFilesUpload.push(makeItemFile(file));
+      const item = makeItemFile(file);
+      listFilesUpload.push(item);
+      addThumbnail(index++, item);
     }
     setImagePreview(0);
   }
+}
+
+const addThumbnail = (index, {src, name}) => {
+  const thumbnails = document.querySelector('.thumbnails');
+  thumbnails.innerHTML+= `
+    <li>
+      <img onclick="setImagePreview(${index})" src="${src}" alt="${name}" />
+    </li>
+  `;
 }
 
 const makeItemFile = (file) => {
@@ -33,10 +45,16 @@ const makeItemFile = (file) => {
 const setImagePreview = (indexFile) => {
   indexCurrentImage = indexFile;
   const {src, name} = listFilesUpload[indexFile];
-  document.querySelector('.list-files img').setAttribute('src', src);
-  document.querySelector('.list-files span').innerText = name;
+  document.querySelector('.preview-file img').setAttribute('src', src);
+  document.querySelector('.preview-file span').innerText = name;
   document.querySelector('.base-menu.footer span').innerText =
     `${indexCurrentImage + 1} / ${listFilesUpload.length}`;
+  const activeThumbnail = document.querySelector('.thumbnails li .active');
+  if (activeThumbnail) {
+    activeThumbnail.classList.remove('active');
+  }
+  const imgThumbnail = document.querySelector(`.thumbnails li:nth-child(${indexCurrentImage + 1}) img`);
+  imgThumbnail.classList.add('active');
 
   const fastBackward = document.querySelector('.base-menu i.fa-fast-backward');
   const stepBackward = document.querySelector('.base-menu i.fa-step-backward');

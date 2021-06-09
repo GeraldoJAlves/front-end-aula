@@ -49,24 +49,47 @@ body > div {
   height: 100vh;
 }
 
-.list-files {
+.thumbnails {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  height: 12vh;
+}
+
+.thumbnails img {
+  box-sizing: border-box;
+  width: 12vw;
+  height: 12vh;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity .8s;
+}
+
+.thumbnails img:hover {
+  opacity: 1;
+}
+
+.thumbnails img.active {
+  opacity: 1;
+  cursor: default;
+  border: 1px solid gray;
+}
+
+.preview-file {
   display: flex;
   margin: 0;
   padding: 0;
-}
-
-.list-files li {
   width: 100vw;
-  height: calc(100vh - 40px);
-  display: flex;
+  height: 88vh;
   flex-direction: column;
   position: relative;
 }
 
-.list-files li img {
+.preview-file img {
   flex: 1;
   width: 100vw;
-  max-height: calc(100% - 40px);
+  max-height: calc(100% - 80px);
   object-fit: contain;
 }
 
