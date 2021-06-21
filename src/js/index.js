@@ -9,7 +9,6 @@ const uploadFile = () => {
 const listFiles = () => {
   const inputUpload = document.getElementsByName('file-upload');
   const files = inputUpload[0].files;
-
   if (files.length > 0) {
     listFilesUpload = [];
     document.querySelector('body > main').classList.add('hidden-element');
@@ -22,16 +21,33 @@ const listFiles = () => {
       addThumbnail(index++, item);
     }
     setImagePreview(0);
+
+    document.querySelector('.thumbnails').addEventListener('click', function (event) {
+      event.stopPropagation();
+      if (
+        event.target.nodeName !== "IMG" || 
+        Array.prototype.indexOf.call(event.target.classList, 'active') != -1
+      ) {
+        return;
+      }
+      const index = Array.prototype.indexOf.call(event.target.parentNode.parentNode.children, event.target.parentNode);
+      setImagePreview(index);
+    });
   }
+  inputUpload[0].value = "";
 }
 
 const addThumbnail = (index, {src, name}) => {
   const thumbnails = document.querySelector('.thumbnails');
   thumbnails.innerHTML+= `
     <li>
-      <img onclick="setImagePreview(${index})" src="${src}" alt="${name}" />
+      <img src="${src}" alt="${name}" />
     </li>
   `;
+}
+
+const deleteThumbnail = (index) => {
+  document.querySelector(`.thumbnails li:nth-child(${index + 1})`).remove();
 }
 
 const makeItemFile = (file) => {
@@ -40,6 +56,22 @@ const makeItemFile = (file) => {
     src,
     name: file.name
   }
+}
+
+const deleteFile = () => {
+  // indexCurrentImage => 1
+  deleteThumbnail(indexCurrentImage);
+  listFilesUpload = listFilesUpload.filter( function (v,index) {
+    return index != indexCurrentImage
+  });
+
+  if (listFilesUpload.length) {
+    setImagePreview(0);
+  } else {
+    document.querySelector('body > main').classList.remove('hidden-element');
+    document.querySelector('body > div').classList.add('hidden-element');
+  }
+
 }
 
 const setImagePreview = (indexFile) => {
