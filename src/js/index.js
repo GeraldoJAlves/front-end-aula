@@ -50,6 +50,17 @@ const deleteThumbnail = (index) => {
   document.querySelector(`.thumbnails li:nth-child(${index + 1})`).remove();
 }
 
+const hideThumbnails = () => {
+  const toggleThumbnails = document.querySelector('#toggle-thumbnail');
+  if (document.querySelector(`.thumbnails`).classList.toggle('hidden-element')) {
+    toggleThumbnails.classList.remove('fa-chevron-up');
+    toggleThumbnails.classList.add('fa-chevron-down');
+  } else {
+    toggleThumbnails.classList.add('fa-chevron-up');
+    toggleThumbnails.classList.remove('fa-chevron-down');
+  }
+}
+
 const makeItemFile = (file) => {
   const src = URL.createObjectURL(file);
   return {

@@ -38,7 +38,7 @@ input[type="file"] {
   display: none;
 }
 
-body > .hidden-element {
+body .hidden-element {
   display: none;
 }
 
@@ -46,7 +46,10 @@ body > .hidden-element {
 body > div {
   background-color: black;
   width: 100vw;
+  max-height: 100vh;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .thumbnails {
@@ -81,14 +84,16 @@ body > div {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 88vh;
+  max-width: 100vw;
   flex-direction: column;
   position: relative;
+  flex: 1;
+  height: 0px;
 }
 
 .preview-file img {
-  flex: 1;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   max-height: calc(100% - 80px);
   object-fit: contain;
 }
